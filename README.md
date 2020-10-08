@@ -37,7 +37,7 @@
 
 
 # 開発メモ
-- Bladeについて
+- View(Blade)について
 - Requestについて
 - [Controllerについて](./app/Controllers)
 - [Modelについて](./app/Models)
