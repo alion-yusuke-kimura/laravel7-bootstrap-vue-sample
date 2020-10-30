@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kyslik\ColumnSortable\Sortable;
 
 class MCustomer extends Model
 {
     use SoftDeletes;
+    use Sortable;
 
     protected $fillable = [
         "code", // VARCHAR(10) NOT NULL,
@@ -19,4 +21,6 @@ class MCustomer extends Model
         "tel", // VARCHAR(15) NULL DEFAULT NULL,
         "fax", // VARCHAR(15) NULL DEFAULT NULL
     ];
+
+    public $sortable = ['id','code','name,','name_kana','zip_code','address','building_name','tel','fax'];
 }

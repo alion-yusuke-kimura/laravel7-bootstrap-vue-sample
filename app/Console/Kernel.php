@@ -16,6 +16,10 @@ class Kernel extends ConsoleKernel
         //
     ];
 
+    protected $routeMiddleware = [
+        \App\Http\Middleware\ActionLogMiddleware::class,
+    ];
+
     /**
      * Define the application's command schedule.
      *

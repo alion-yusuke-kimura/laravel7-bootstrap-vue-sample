@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerRequest;
 use App\Models\MCustomer;
+use Illuminate\Http\Request;
+
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = MCustomer::paginate(10);
+        $customers = MCustomer::select()
+        ->sortable()
+        ->paginate(5);
         return view("customer.index", compact("customers"));
     }
 
@@ -49,5 +53,21 @@ class CustomerController extends Controller
         $customer = MCustomer::find($id);
         $customer->delete();
         return redirect()->route('customer.index');
+    }
+
+    public function search(Request $request)
+    {
+        if(is_null($request->input('code'))){
+            $customers = MCustomer::where('name',$request->input('name'))->paginate(5);
+        }elseif(is_null($request->input('name'))){
+            $customers = MCustomer::where('code', $request->input('code'))->paginate(5);
+        }else{
+            $customers = MCustomer::where('code', $request->input('code'))->where('name',$request->input('name'))->paginate(5);
+        }
+
+        \Debugbar::addMessage($customers);
+        return view('customer.index',compact('customers'));
+        //return redirect()->back()->withInput()->with('customers', $customers);
+
     }
 }
