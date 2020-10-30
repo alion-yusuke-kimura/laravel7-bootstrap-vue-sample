@@ -9,17 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
-<<<<<<< HEAD
-        "davejamesmiller/laravel-breadcrumbs": "^5.3",
-=======
         "barryvdh/laravel-debugbar": "^3.5",
->>>>>>> upstream/master
+        "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
+        "kyslik/column-sortable": "^6.4",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.4"
+        "laravel/ui": "^2.4",
+        "laravelcollective/html": "^6.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

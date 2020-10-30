@@ -21,3 +21,7 @@
         $trail->parent('show',$customer);
         $trail->push('編集', url('customer/' .$customer->id));
     });
+
+    Breadcrumbs::for('search', function ($trail) {
+        $trail->push('検索', url('customer/search'));
+    });
