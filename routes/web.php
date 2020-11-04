@@ -19,11 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('guest')->namespace('Guest')->name('guest.')->group(function(){
+    Auth::routes();
+    Route::get('/', 'GuestController@index')->name('index');
+});
+// Route::middleware('auth:guest_api')->group(function () {
+     Route::resource('guest', 'Guest\GuestController', ['only' => ['create', 'store', 'show', 'edit', 'update', 'destroy']])->middleware(ActionLogMiddleware::class);
+// });
+// Route::middleware('auth:guest_api')->except('logout')->group(function () {
+//     Route::resource('/guest', 'Guest\GuestController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']])->middleware(ActionLogMiddleware::class);
+// });
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/customer', 'CustomerController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']])->middleware(ActionLogMiddleware::class);
-Route::get('/customer/{code?}', 'CustomerController@search')->name('customer.search');
+// Route::get('/customer{cudtomer?}', 'CustomerController@search')->name('customer.search');
 
 // Route::prefix('customer')->group(function() {
 //     Route::resource('', 'CustomerController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']])->middleware(ActionLogMiddleware::class);

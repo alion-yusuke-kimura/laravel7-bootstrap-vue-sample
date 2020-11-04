@@ -15,7 +15,7 @@
                         {{ Form::close() }}
                     </div>
                 </div> --}}
-                <form method="get" action="{{ route('customer.index') }}" >
+                <form method="get" action="{{ route('guest.index') }}" >
                     <div class="card-body">
                         <table>
                             <tr>
@@ -32,7 +32,7 @@
                             </tr>
                         </table>
                         <div class="text-right">
-                            <a class="btn btn-primary" href="{{ route('customer.index') }}">解除</a>
+                            <a class="btn btn-primary" href="{{ route('guest.index') }}">解除</a>
                         </div>
                         <div class="text-right">
                             <button type="submit" class="col-sm-3 btn btn-primary">検索</button>
@@ -48,7 +48,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a class="btn btn-primary" href="{{ route('customer.create') }}">Create</a>
+                    <a class="btn btn-primary" href="{{ route('guest.create') }}">Create</a>
                     <table class="table table-striped" >
                         <thead class="table-dark">
                             <tr>
@@ -64,26 +64,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($customers as $customer)
+                            @foreach ($guests as $guest)
                             <tr>
-                                <td><a href="{{ route('customer.show', $customer->id) }}">{{ $customer->id }}</a></td>
-                                <td>{{ $customer->code }}</td>
-                                <td>{{ $customer->name }}</td>
-                                <td>{{ $customer->name_kana }}</td>
+                                <td><a href="{{ route('guest.show', $guest->id) }}">{{ $guest->id }}</a></td>
+                                <td>{{ $guest->code }}</td>
+                                <td>{{ $guest->name }}</td>
+                                <td>{{ $guest->name_kana }}</td>
                                 <td>
-                                    @isset($customer->zip_code)
-                                        {{  substr($customer->zip_code,0,3) . "-" . substr($customer->zip_code,3,4) }}
+                                    @isset($guest->zip_code)
+                                        {{  substr($guest->zip_code,0,3) . "-" . substr($guest->zip_code,3,4) }}
                                     @endisset
                                 </td>
-                                <td>{{ $customer->address }}</td>
-                                <td>{{ $customer->building_name }}</td>
-                                <td>{{ $customer->tel }}</td>
-                                <td>{{ $customer->fax }}</td>
+                                <td>{{ $guest->address }}</td>
+                                <td>{{ $guest->building_name }}</td>
+                                <td>{{ $guest->tel }}</td>
+                                <td>{{ $guest->fax }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $customers ->appends(request()->query())->links() }}
+                    {{ $guests ->appends(request()->query())->links() }}
                 </div>
             </div>
         </div>

@@ -46,6 +46,24 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'guest' => [
+            'driver' => 'session',
+            'provider' => 'guests',
+        ],
+
+        // 'guest_web' => [
+        //     'driver' => 'session',
+        //     'provider' => 'guests',
+        // ],
+
+        // 'guest_api' => [
+        //     'driver' => 'token',
+        //     'provider' => 'guests',
+        //     'hash' => false,
+        // ],
+
+
     ],
 
     /*
@@ -69,6 +87,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\MUser::class,
+        ],
+
+        'guests' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MGuest::class,
         ],
 
         // 'users' => [
